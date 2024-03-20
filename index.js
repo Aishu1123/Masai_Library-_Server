@@ -11,8 +11,8 @@ app.use(express.json());
 
 
 
-app.use("/api" ,userRouter);
-app.use("/api" ,bookRouter);
+app.use("/users" ,userRouter);
+app.use("/book" ,bookRouter);
 app.use("/api" ,orderRouter);
 
 // app.use("/",(req,res)=>{

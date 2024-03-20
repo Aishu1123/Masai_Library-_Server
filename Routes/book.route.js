@@ -1,10 +1,11 @@
 const express = require("express");
 const { BookModel } = require("../Model/book.model");
+const { auth } = require("../Middleware/auth.middleware");
 
 const bookRouter = express.Router();
 
 // Add new Book
-bookRouter.post('/books',async (req,res)=> {
+bookRouter.post('/books',auth,async (req,res)=> {
   const { title, author, category, price, quantity} = req.body;
     try{
          const newBook = new BookModel({title, author, category, price, quantity})
@@ -42,7 +43,7 @@ bookRouter.get("/books/:id", async (req, res) => {
 
 
   //   Update Book by ID
-  bookRouter.put("/books/:id", async (req, res) => {
+  bookRouter.put("/books/:id",auth, async (req, res) => {
     const { id } = req.params;
     try {
       const book = await BookModel.findByIdAndUpdate({ _id: id }, req.body);
@@ -55,7 +56,7 @@ bookRouter.get("/books/:id", async (req, res) => {
 
 
   // Delete Book by ID
-bookRouter.delete("/books/:id", async (req, res) => {
+ bookRouter.delete("/books/:id",auth ,async (req, res) => {
     const { id } = req.params;
     try {
       const book = await BookModel.findByIdAndDelete({ _id: id });
@@ -66,6 +67,32 @@ bookRouter.delete("/books/:id", async (req, res) => {
     }
   });
 
+
+   
+  //categorybasedbook
+bookRouter.get('/category/:category',async (req, res) => {
+    const { category } = req.params;
+    try {
+      const books = await BookModel.find({ category });
+      res.status(200).send({"msg":"here the book you wanted",books})
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send({ "msg": "Server Error" });
+    }
+  });
+  
+
+//auhtor&categorybasedbook
+  bookRouter.get('/author/:author/category/:category', async (req, res) => {
+    const { author, category } = req.params;
+    try {
+      const books = await BookModel.find({ author, category });
+      res.status(200).send({"msg":"here the book you wanted",books})
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send({ "msg": "Server Error" });
+    }
+  });
 
 module.exports={
     bookRouter
