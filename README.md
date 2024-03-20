@@ -7,7 +7,7 @@ Welcome to the documentation for the Masai Library backend API. This API allows 
 
 ## Base URL
 
-The base URL for all API endpoints is: https://masai-library-server-2.onrender.com/
+The base URL for all API endpoints is: https://localhost:3000/
 
 ## Authentication
 
