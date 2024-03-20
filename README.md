@@ -108,7 +108,7 @@ To access protected routes, users need to register and login. Authentication is 
 
  ### Get All Orders
 - **Method:** GET
-- **Endpoint:** `/order`
+- **Endpoint:** `/orders`
 - **Description:**Allows admin to view all the orders placed so far with user and book details. Populates both user and book data.
 - **Request Body:**
   - **Response:** ` Array of order objects with populated user and book details`
