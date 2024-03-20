@@ -15,9 +15,9 @@ app.use("/api" ,userRouter);
 app.use("/api" ,bookRouter);
 app.use("/api" ,orderRouter);
 
-app.use("/",(req,res)=>{
-    res.send("Welcome to Masai Library")
-})
+// app.use("/",(req,res)=>{
+//     res.send("Welcome to Masai Library")
+// })
 
 app.listen(process.env.port , async()=>{
     try{
