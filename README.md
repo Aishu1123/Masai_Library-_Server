@@ -8,7 +8,7 @@ Welcome to the documentation for the Masai Library backend API. This API allows 
 
 ## Base URL
 
-The base URL for all API endpoints is: `https://masai-library-backend.herokuapp.com/api`
+The base URL for all API endpoints is: `https://masai-library-backend./api`
 
 ## Authentication
 
